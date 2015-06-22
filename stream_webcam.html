@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+<style>
+video {
+  border : 1px solid black;
+}
+.sepia {
+  -webkit-filter: sepia(1);
+  filter: sepia(1);
+}
+</style>
+</head>
+<body >
+  <video width=400 height=350 id="video" class="sepia" controls autoplay></video>
+<script>
+navigator.getUserMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
+if (navigator.getUserMedia) {
+   navigator.getUserMedia (
+
+      // constraints
+      {
+         video: true,
+         audio: false
+      },
+
+      // successCallback
+      function(localMediaStream) {
+         var video = document.querySelector('video');
+         video.src = window.URL.createObjectURL(localMediaStream);
+         // Do something with the video here, e.g. video.play()
+      },
+
+      // errorCallback
+      function(err) {
+         console.log("The following error occured: " + err);
+      }
+   );
+} else {
+   console.log("getUserMedia not supported");
+}
+</script>
+</body>
+</html>

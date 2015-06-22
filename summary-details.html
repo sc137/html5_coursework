@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>Page Title</title>
+   <link rel="stylesheet" href="style.css">
+   <!--script src="script.js"></script-->
+	<style>
+	summary::-webkit-details-marker {
+		display: none;
+	}
+	
+		summary:after {
+			content:"+";
+			color:#FF00FF;
+			float: left;
+			font-size: 1.5em;
+			margin: -5px 5px 0 0;
+			padding: 0;
+			text-align: center;
+			width: 20px;
+		}
+		
+		details[open] summary:after {
+			content:"-";
+			color:#FFFFFF;
+		}
+		
+		details {
+			background: #6afd96;
+			padding: 3px 0;
+		}
+		
+		mark {
+			color: black;
+			font-weight: bold;
+			background: yellow;
+		}
+		
+		time {
+			font: monospace;
+			font-size: .9em;
+			color: blue;
+			
+		}
+	
+	</style>
+</head>
+<body>
+	
+	<p>Last update: <time>24min</time> ago.</p>
+	
+	<details>
+		<summary>
+			How to beat the boss...spoiler alert!
+		</summary>
+		<ul>
+			<li>Just aim to the red spots near his eyes</li>
+			<li>Keep shooting at these spots until the eyes open, <mark>then hit quickly both eyes with your laser beam</mark>.</li>
+		</ul>
+	</details>
+	
+</body>
+</html>
