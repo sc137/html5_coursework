@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by sc137 (http://jsbin.com/lewuxu/3/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+#myCanvas {
+  border: 1px solid;
+}
+</style>
+</head>
+<body>
+
+  <canvas id="myCanvas" width=200 height=200></canvas>
+  
+<script id="jsbin-javascript">
+var canvas, ctx;
+
+window.onload = init;
+
+function init() {
+  canvas = document.querySelector('#myCanvas');
+  ctx = canvas.getContext('2d');
+  
+  DrawTwoRect();
+  DrawTwoMore();
+
+  
+}
+
+function DrawTwoRect() {
+  ctx.fillStyle = 'red';
+  ctx.fillRect(10, 10, 100, 100);
+  ctx.fillStyle = 'blue';
+  ctx.fillRect(90, 90, 100, 100);
+}
+
+function DrawTwoMore() {
+  ctx.fillStyle = 'green';
+  ctx.fillRect(10, 140, 50, 50);
+  ctx.fillStyle = 'yellow';
+  ctx.fillRect(140, 10, 50, 50);
+}
+</script>
+</body>
+</html>
