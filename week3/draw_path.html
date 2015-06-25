@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+ <title>Draw in path mode</title>
+ <style>
+    #myCanvas {
+        border: 1px solid #9C9898;
+    }
+ </style>
+ <script>
+    var canvas, ctx;
+
+    window.onload = function () {
+       canvas = document.getElementById('myCanvas');
+       ctx = canvas.getContext('2d');
+
+	drawLines();
+
+	function drawLines()  {
+		ctx.save();
+
+		ctx.strokeStyle = 'blue';
+		ctx.fillStyle = 'red';
+		ctx.lineWidth = '5';
+
+	// 1. Put the "pencil" somewhere with a call to ctx.moveTo(x1, y1). This will be the origin of the first line.
+
+	ctx.moveTo(10,10);
+
+	//2. Call the ctx.lineTo(x2, y2) method to draw a line from the previous position (previous step) to the position passed as parameters to the lineTo(...) method. This position will serve as the origin for the next line to be drawn.
+
+	ctx.lineTo(390, 390);
+
+	//3. Call lineTo(x3, y3) again to draw a line that goes from (x2, y2) to (x3, y3). This line will start at the end of the previous one.
+
+	ctx.lineTo(390, 10);
+	//ctx.lineTo(10, 10);
+	ctx.lineTo(10, 390);
+	ctx.closePath();
+
+
+	//4. Repeat step 3 to draw more connected lines.
+
+	//5. Call the ctx.stroke() or the ctx.fill() methods to draw the path defined by the different lines.
+
+	ctx.stroke();
+	ctx.fill();
+
+		};
+
+
+   // GOOD PRACTICE : a restore for a save!
+   ctx.restore();
+ }
+ </script>
+ </head>
+ <body>
+     <canvas id="myCanvas" width="400" height="400">
+     </canvas>
+ </body>
+</html>

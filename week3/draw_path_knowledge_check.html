@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+ <title>Draw in path mode</title>
+ <style>
+    #myCanvas {
+        border: 1px solid #9C9898;
+    }
+ </style>
+ <script>
+    var canvas, ctx;
+ 
+    window.onload = function () {
+       canvas = document.getElementById('myCanvas');
+       ctx = canvas.getContext('2d');
+	   
+	drawLines();
+		
+	function drawLines()  {
+		ctx.save();
+		
+		ctx.beginPath();
+		ctx.moveTo(100, 100);
+		ctx.lineTo(200, 200);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(250, 250, 200, 0, 2*Math.PI);
+		ctx.stroke();
+		
+		
+		
+		};
+ 
+  
+   // GOOD PRACTICE : a restore for a save!
+   ctx.restore();
+ }
+ </script>
+ </head>
+ <body>
+     <canvas id="myCanvas" width="600" height="600">
+     </canvas>
+ </body>
+</html>

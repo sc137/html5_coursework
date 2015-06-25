@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+ <title>Drawing Text</title>
+ <style>
+    #myCanvas {
+        border: 1px solid #9C9898;
+    }
+ </style>
+ <script>
+    var canvas, ctx;
+ 
+    window.onload = function () {
+       canvas = document.getElementById('myCanvas');
+       ctx = canvas.getContext('2d');
+ 
+	DrawLine();
+	DrawText();
+	
+	function DrawText() {
+		ctx.save();
+		
+		ctx.font = '15pt Verdana';
+		
+		ctx.textBaseline = "top";
+		ctx.fillText("top", 0, 75);
+		ctx.textBaseline = "hanging";
+		ctx.fillText("hanging", 40, 75);
+		ctx.textBaseline = "middle";
+		ctx.fillText("middle", 125, 75);
+		ctx.textBaseline = "alphabetic";
+		ctx.fillText("alpha", 195, 75);
+		
+		ctx.translate(0, 200);
+		
+		ctx.textAlign = "center";
+		ctx.fillText("center", 250, 20);
+		ctx.textAlign = "start";
+		ctx.fillText("start", 250, 40);
+		ctx.textAlign = "end";
+		ctx.fillText("end", 250, 60);
+		ctx.textAlign = "left";
+		ctx.fillText("left", 250, 80);
+		ctx.textAlign = "right";
+		ctx.fillText("right", 250, 100);
+		
+		ctx.restore();		
+		}
+		
+	function DrawLine() {
+		ctx.stokeStyle = "#000000";
+		ctx.lineWidth  = 1;
+		ctx.beginPath();
+		ctx.moveTo(  0, 75);
+		ctx.lineTo(500, 75);
+		ctx.stroke();
+		ctx.closePath();
+	}
+	
+	// since ctx was saved and restored, this is top left
+	ctx.fillRect(10, 10, 50, 50);
+       
+ };
+ 
+  </script>
+ </head>
+ <body>
+     <canvas id="myCanvas" width="500" height="400">
+     </canvas>
+ </body>
+</html>

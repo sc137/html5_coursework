@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+ <title>Drawing Text</title>
+ <style>
+    #myCanvas {
+        border: 1px solid #9C9898;
+    }
+ </style>
+ <script>
+    var canvas, ctx;
+ 
+    window.onload = function () {
+       canvas = document.getElementById('myCanvas');
+       ctx = canvas.getContext('2d');
+ 
+	DrawText();
+	
+	function DrawText() {
+		ctx.save();
+		
+		ctx.translate(50, 200);
+		ctx.rotate(-.45);
+		
+		ctx.font = "60pt calibri";
+		
+		ctx.fillStyle = 'red';
+		ctx.strokeStyle = 'blue';
+		ctx.lineWidth = '2';
+		
+		// draws the text
+		ctx.fillText("hello, world", 13, 70);
+		
+		// draws outline of the text
+		ctx.strokeText("hello, world", 10, 72);
+		
+		var textMetrics = ctx.measureText("hello, world");
+		var width = textMetrics.width;
+		
+		// Draw a text that displays the width of the previous drawn text
+		ctx.font = "20pt Arial";
+		ctx.fillText("Width of previous text: " + width + "pixels", 10, 150, 400);
+		
+		ctx.restore();
+	}
+	
+	// since ctx was saved and restored, this is top left
+	ctx.fillRect(10, 10, 50, 50);
+       
+ };
+ 
+  </script>
+ </head>
+ <body>
+     <canvas id="myCanvas" width="500" height="400">
+     </canvas>
+ </body>
+</html>
