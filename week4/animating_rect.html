@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Animate Rects</title>
+
+  <style>
+	  #myCanvas {
+		  border: 1px solid black;
+	  }
+ </style>
+
+</head>
+<body>
+
+  <canvas id="myCanvas" width=400 height=400></canvas>
+
+<script id="jsbin-javascript">
+var canvas, ctx;
+var rectangleX = 0;
+var colors = ['red', 'blue', 'green'];
+var currentColor = 0;
+var speed = 3;
+
+window.onload = init;
+
+function init() {
+  canvas = document.querySelector('#myCanvas');
+  ctx = canvas.getContext('2d');
+
+  // don't use setInterval to animate, it works but is not accurate
+  //setInterval(animate, 1)
+  // also, don't use setTimeout(func, delay);
+  //setTimeout(animate, 100);
+  
+  // ** preferred ** //
+  requestAnimationFrame(animate);
+  
+  // setInterval is OK for things like color changes //
+  setInterval(changeColor, 1000);
+
+}
+
+function animate() {
+	// - 1. clear the canvas
+	ctx.clearRect(0,0, canvas.width, canvas.height);
+	
+	// 2 - draw something
+	//ctx.fillStyle = 'red';
+	ctx.fillRect(rectangleX, 10, 100, 100);
+	
+	// 3 - move the shapes
+	rectangleX = rectangleX + speed;
+	
+	if ((rectangleX+100 > canvas.width) || (rectangleX <=0)) {
+		speed = -speed;
+	}
+	
+	
+	
+	// call request again to create the smooth transitions
+	requestAnimationFrame(animate);
+
+}
+
+function changeColor() {
+	ctx.fillStyle = colors[currentColor%3];
+	currentColor += 1;
+}
+</script>
+</body>
+</html>
